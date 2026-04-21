@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Baño Laboral 💩 | Descubrí cuánto tiempo y plata dejaste en el trono</title>
+<meta name="description" content="Calculá cuántas horas, días, años laborales y dinero pasaste en el baño durante tu vida laboral. Landing viral lista para compartir, monetizar y medir." />
+<meta name="keywords" content="calculadora baño, calculadora laboral, calculadora viral, tiempo en el baño, humor laboral" />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="Calculadora de Baño Laboral 💩" />
+<meta property="og:description" content="Descubrí cuánto tiempo y plata dejaste en el trono durante tu vida laboral." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://tu-dominio.vercel.app/og-image.png" />
+<meta property="og:url" content="https://tu-dominio.vercel.app" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Calculadora de Baño Laboral 💩" />
+<meta name="twitter:description" content="Calculá tus horas sanitarias, tu ranking y el dinero cobrado en el baño." />
+<meta name="twitter:image" content="https://tu-dominio.vercel.app/og-image.png" />
+<link rel="canonical" href="https://tu-dominio.vercel.app" />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- html2canvas para descarga PNG fiel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Baño Laboral",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "description": "Calculadora humorística para estimar horas, días, años laborales y dinero cobrado en el baño.",
+  "offers": {"@type": "Offer","price": "0","priceCurrency": "ARS"}
+}
+</script>
+
+<!-- ============================================================ -->
+<!-- ZONA DE PIXELS / ANALYTICS — PEGÁ AQUÍ TUS SCRIPTS          -->
+<!-- Google Analytics: <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script> -->
+<!-- Meta Pixel: pegar el snippet completo de business.facebook.com -->
+<!-- Google Tag Manager: pegar el snippet de tagmanager.google.com  -->
+<!-- ============================================================ -->
+
+<style>
+:root {
+  --bg:       #0d0d0d;
+  --bg2:      #141414;
+  --card:     #1a1a1a;
+  --card2:    #1f1f1f;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #f0ece4;
+  --muted:    #7a7673;
+  --muted2:   #9a948f;
+  --accent:   #f5c842;
+  --accent2:  #f0b830;
+  --green:    #3ecf8e;
+  --green2:   #2db87a;
+  --red:      #ff5c5c;
+  --purple:   #a78bfa;
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body:    'Manrope', sans-serif;
+
+  --r-sm:  12px;
+  --r-md:  18px;
+  --r-lg:  24px;
+  --r-xl:  32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Floating emojis ── */
+.floating {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.float-item {
+  position: absolute;
+  font-size: 22px;
+  opacity: .04;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  from { transform: translateY(110vh) rotate(0deg); }
+  to   { transform: translateY(-20vh) rotate(360deg); }
+}
+
+/* ── Layout ── */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 32px 20px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding: 48px 16px 24px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245,200,66,0.10);
+  border: 1px solid rgba(245,200,66,0.25);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6.5vw, 72px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.hero h1 span {
+  color: var(--accent);
+}
+.hero-sub {
+  max-width: 680px;
+  margin: 0 auto 32px;
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--muted2);
+  line-height: 1.6;
+}
+.hero-pills {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.pill {
+  background: var(--card);
+  border: 1px solid var(--border2);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted2);
+}
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #0d0d0d;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  border: none;
+  border-radius: var(--r-md);
+  padding: 16px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .15s, background .15s;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-2px); }
+.btn-hero:active { transform: translateY(0); }
+
+/* ── Ad block ── */
+.ad-block {
+  background: var(--card);
+  border: 1.5px dashed rgba(255,255,255,0.10);
+  border-radius: var(--r-lg);
+  padding: 20px 24px;
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.ad-block .ad-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border2);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.ad-block .ad-placeholder {
+  color: var(--muted);
+  font-size: 14px;
+  flex: 1;
+}
+/* Tamaños de ad por clase */
+.ad-leaderboard  { min-height: 90px; }   /* 728×90 */
+.ad-rectangle    { min-height: 250px; }  /* 300×250 */
+.ad-banner       { min-height: 60px; }   /* 468×60  */
+.ad-mobile       { min-height: 50px; }   /* 320×50  */
+
+/* ── Main grid ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 28px;
+}
+
+/* ── Calculator ── */
+.calc-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.calc-sub {
+  color: var(--muted2);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.field {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  transition: border-color .2s;
+}
+.field:focus-within {
+  border-color: rgba(245,200,66,0.4);
+}
+.field.wide { grid-column: 1 / -1; }
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.field input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+.field input::placeholder { color: var(--muted); }
+.field-note {
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── Buttons ── */
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.btn {
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 13px 18px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: transform .15s, opacity .15s, filter .15s;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--accent); color: #0d0d0d; flex: 1; min-width: 180px; font-family: var(--font-display); font-size: 15px; font-weight: 800; }
+.btn-green   { background: var(--green); color: #0d0d0d; }
+.btn-outline { background: transparent; border: 1px solid var(--border2); color: var(--text); }
+.btn-ghost   { background: var(--card2); color: var(--muted2); }
+
+/* ── Result panel ── */
+.result {
+  display: none;
+  margin-top: 22px;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 24px;
+  animation: slideDown .35s ease;
+}
+.result.show { display: block; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.result-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.poop-anim {
+  font-size: 42px;
+  animation: wiggle 1.2s infinite ease-in-out;
+}
+@keyframes wiggle {
+  0%,100% { transform: rotate(0deg) scale(1); }
+  25%      { transform: rotate(-9deg) scale(1.07); }
+  75%      { transform: rotate(9deg) scale(1.07); }
+}
+.result-head-text .label {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+.result-head-text .title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+}
+.stat .s-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.stat .s-value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.stat .s-value.green { color: var(--green); }
+.stat .s-value.purple { color: var(--purple); }
+.stat .s-value.red { color: var(--red); }
+
+/* ── Rank ── */
+.rank-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.rank-emoji { font-size: 36px; }
+.rank-info .rank-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+}
+.rank-info .rank-desc {
+  color: var(--muted2);
+  font-size: 13px;
+  margin-top: 3px;
+}
+.rank-badge {
+  margin-left: auto;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.badge-bronze { background: rgba(196,122,58,.15); color: #e0954a; border: 1px solid rgba(196,122,58,.3); }
+.badge-silver { background: rgba(170,179,189,.12); color: #b8c5d1; border: 1px solid rgba(170,179,189,.3); }
+.badge-gold   { background: rgba(245,200,66,.12);  color: var(--accent); border: 1px solid rgba(245,200,66,.3); }
+
+/* ── Percentile bar ── */
+.percentile-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+.percentile-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 10px;
+}
+.percentile-text {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+.bar-bg {
+  background: var(--card2);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--accent));
+  border-radius: 999px;
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+
+/* ── Share box ── */
+.share-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.share-box textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: vertical;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted2);
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+/* ── Social buttons ── */
+.social-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.btn-wa  { background: #25D366; color: #fff; }
+.btn-x   { background: #000; color: #fff; border: 1px solid #333; }
+.btn-li  { background: #0A66C2; color: #fff; }
+
+/* ── Sidebar ── */
+.sidebar .card + .card { margin-top: 16px; }
+.sidebar-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.sidebar-sub {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.kpi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.kpi-item {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+}
+.kpi-item .kpi-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.kpi-item .kpi-num {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* ── Howto ── */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 900;
+  margin: 40px 0 18px;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.step-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+}
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0d0d0d;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+.step-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.step-card p {
+  font-size: 13px;
+  color: var(--muted2);
+  line-height: 1.5;
+}
+
+/* ── Lead capture ── */
+.lead-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 28px;
+  margin-top: 24px;
+}
+.lead-box h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.lead-box p { color: var(--muted2); font-size: 14px; margin-bottom: 16px; }
+.lead-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.lead-form input {
+  flex: 1;
+  min-width: 220px;
+  background: var(--card2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  padding: 13px 16px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+}
+.lead-form input:focus { border-color: rgba(245,200,66,.4); }
+.lead-form input::placeholder { color: var(--muted); }
+.lead-form button {
+  background: var(--accent);
+  color: #0d0d0d;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 13px 22px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+}
+.lead-form button:hover { background: var(--accent2); transform: translateY(-1px); }
+
+/* ── Testimonials ── */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+.quote {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  font-size: 14px;
+  color: var(--muted2);
+  line-height: 1.6;
+}
+.quote-author {
+  display: block;
+  margin-top: 12px;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 13px;
+}
+
+/* ── FAQ ── */
+.faq { margin-top: 24px; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  margin-bottom: 10px;
+}
+.faq-item h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.faq-item p {
+  color: var(--muted2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* ── Publish ── */
+.publish-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.publish-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px;
+}
+.publish-card strong {
+  font-family: var(--font-display);
+  font-size: 15px;
+}
+.publish-card p { color: var(--muted2); font-size: 12px; margin-top: 6px; line-height: 1.5; }
+.codebox {
+  background: #0d1117;
+  color: #7dd3a8;
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: var(--r-md);
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow: auto;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── Sticky CTA ── */
+.sticky-cta {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  width: min(740px, calc(100% - 28px));
+  background: rgba(26,26,26,.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-lg);
+  padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+.sticky-cta .s-label { font-size: 13px; color: var(--muted2); }
+.sticky-cta .s-label strong { color: var(--text); }
+.sticky-cta .s-btn {
+  background: var(--accent);
+  color: #0d0d0d;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 11px 18px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, transform .15s;
+}
+.sticky-cta .s-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--accent);
+  color: #0d0d0d;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .25s ease;
+  z-index: 200;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── PNG export target ── */
+#png-target {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1080px;
+  background: #111;
+  padding: 60px;
+  border-radius: 32px;
+  font-family: var(--font-body);
+  color: #f0ece4;
+}
+#png-target .png-header {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+#png-target .png-sub {
+  color: #7a7673;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+#png-target .png-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+#png-target .png-stat {
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 18px 20px;
+}
+#png-target .png-stat .k { font-size: 13px; color: #7a7673; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+#png-target .png-stat .v { font-family: var(--font-display); font-size: 28px; font-weight: 900; color: #f5c842; }
+#png-target .png-rank {
+  background: #1a1a1a;
+  border-radius: 18px;
+  padding: 18px 20px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+#png-target .png-footer {
+  font-size: 14px;
+  color: #7a7673;
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#png-target .png-poop { font-size: 60px; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .input-grid, .stat-grid, .steps-grid, .testimonials, .publish-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 38px; }
+  .card { padding: 18px; }
+  .sticky-cta { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .sticky-cta .s-btn { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Floating emojis -->
+<div class="floating" aria-hidden="true">
+  <div class="float-item" style="left:5%;  animation-duration:19s; animation-delay:-4s">💩</div>
+  <div class="float-item" style="left:18%; animation-duration:23s; animation-delay:-9s">🧻</div>
+  <div class="float-item" style="left:34%; animation-duration:17s; animation-delay:-12s">🚽</div>
+  <div class="float-item" style="left:50%; animation-duration:21s; animation-delay:-6s">💩</div>
+  <div class="float-item" style="left:67%; animation-duration:18s; animation-delay:-10s">🧻</div>
+  <div class="float-item" style="left:83%; animation-duration:20s; animation-delay:-14s">🚽</div>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-badge">💩 Humor laboral + matemática innecesariamente precisa</div>
+    <h1>Descubrí cuánto <span>tiempo y plata</span><br>dejaste en el trono</h1>
+    <p class="hero-sub">Ingresá tus datos, hacé la cuenta y compartí tu resultado con el grupo del trabajo. Spoiler: el número va a ser vergonzoso.</p>
+    <div class="hero-pills">
+      <div class="pill">✓ Ideal para WhatsApp, X y LinkedIn</div>
+      <div class="pill">✓ Descargá tu resultado en PNG</div>
+      <div class="pill">✓ 100% gratis y sin registro</div>
+    </div>
+    <a href="#calc" class="btn-hero">Hacer mi cálculo ahora →</a>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- AD SLOT 1: LEADERBOARD HERO — 728×90 px (desktop)           -->
+  <!-- Reemplazá este bloque con tu tag de AdSense o banner propio  -->
+  <!-- ============================================================ -->
+  <div class="ad-block ad-leaderboard" id="ad-hero">
+    <span class="ad-label">Publicidad</span>
+    <span class="ad-placeholder">Banner 728×90 — AdSense / Patrocinio / Afiliado</span>
+  </div>
+
+  <!-- Main grid -->
+  <div class="main-grid">
+    <!-- Calculator -->
+    <section class="card" id="calc">
+      <h2 class="calc-title">Calculadora de Baño Laboral 💩</h2>
+      <p class="calc-sub">Cargá los datos básicos y descubrí cuántas horas, días y pesos acumulaste en visitas estratégicas al trono.</p>
+
+      <div class="input-grid">
+        <div class="field">
+          <label for="anos">Años trabajados</label>
+          <input id="anos" type="number" min="0" step="1" value="10" placeholder="Ej: 10">
+          <div class="field-note">Lunes a viernes, 52 semanas/año.</div>
+        </div>
+        <div class="field">
+          <label for="horas">Horas por día laborable</label>
+          <input id="horas" type="number" min="0" step="0.5" value="9" placeholder="Ej: 9">
+          <div class="field-note">De 8 a 17 hs = 9 horas.</div>
+        </div>
+        <div class="field">
+          <label for="veces">Visitas al baño por día</label>
+          <input id="veces" type="number" min="0" step="0.5" value="3" placeholder="Ej: 3">
+          <div class="field-note">Podés usar decimal, ej: 2.5</div>
+        </div>
+        <div class="field">
+          <label for="minutos">Minutos por visita</label>
+          <input id="minutos" type="number" min="0" step="1" value="15" placeholder="Ej: 15">
+          <div class="field-note">Acá se define tu leyenda.</div>
+        </div>
+        <div class="field wide">
+          <label for="sueldo">Sueldo mensual bruto ($)</label>
+          <input id="sueldo" type="number" min="0" step="1000" value="800000" placeholder="Ej: 800000">
+          <div class="field-note">Bruto o neto, lo importante es divertirse con el resultado.</div>
+        </div>
+      </div>
+
+      <div class="btns">
+        <button class="btn btn-primary" onclick="calcular()">Calcular mi historial sanitario 💩</button>
+        <button class="btn btn-ghost" onclick="resetear()">Reiniciar</button>
+      </div>
+
+      <!-- Result -->
+      <div class="result" id="resultado">
+        <div class="result-head">
+          <span class="poop-anim">💩</span>
+          <div class="result-head-text">
+            <div class="label">Veredicto oficial</div>
+            <div class="title">Consejo del Inodoro</div>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="s-label">Horas en el baño</div>
+            <div class="s-value" id="horasOut">0</div>
+          </div>
+          <div class="stat">
+            <div class="s-label">Días equivalentes</div>
+            <div class="s-value green" id="diasOut">0</div>
+          </div>
+          <div class="stat">
+            <div class="s-label">Años de vida laboral</div>
+            <div class="s-value purple" id="anosOut">0</div>
+          </div>
+          <div class="stat">
+            <div class="s-label">Dinero cobrado ahí dentro</div>
+            <div class="s-value red" id="dineroOut">0</div>
+          </div>
+          <div class="stat">
+            <div class="s-label">% de tu jornada</div>
+            <div class="s-value" id="porcentajeOut">0</div>
+          </div>
+          <div class="stat">
+            <div class="s-label">Jornadas completas</div>
+            <div class="s-value green" id="jornadasOut">0</div>
+          </div>
+        </div>
+
+        <!-- Rank -->
+        <div class="rank-block" id="rankBlock">
+          <div class="rank-emoji" id="rankEmoji">🏅</div>
+          <div class="rank-info">
+            <div class="rank-name" id="rankName">—</div>
+            <div class="rank-desc" id="rankDesc">—</div>
+          </div>
+          <div class="rank-badge" id="rankBadge">—</div>
+        </div>
+
+        <!-- Percentile -->
+        <div class="percentile-block">
+          <div class="percentile-label">Tu posición entre los usuarios</div>
+          <div class="percentile-text" id="percentileText">—</div>
+          <div class="bar-bg"><div class="bar-fill" id="barFill"></div></div>
+        </div>
+
+        <!-- Share text -->
+        <div class="share-box">
+          <textarea id="shareText" readonly placeholder="Tu resultado aparece acá para copiar y pegar."></textarea>
+        </div>
+
+        <!-- Social buttons -->
+        <div class="social-btns">
+          <button class="btn btn-wa" onclick="shareWhatsApp()">📱 WhatsApp</button>
+          <button class="btn btn-x"  onclick="shareX()">✕ Twitter / X</button>
+          <button class="btn btn-li" onclick="shareLinkedIn()">in LinkedIn</button>
+        </div>
+
+        <div class="btns">
+          <button class="btn btn-outline" onclick="copiarTexto()">📋 Copiar texto</button>
+          <button class="btn btn-green"   onclick="descargarImagen()">⬇️ Descargar PNG</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="card">
+        <div class="sidebar-title">📊 Indicadores virales</div>
+        <div class="sidebar-sub">Actualizados en tiempo real con cada cálculo.</div>
+        <div class="kpi-list">
+          <div class="kpi-item">
+            <div class="kpi-label">Cálculos realizados hoy</div>
+            <div class="kpi-num" id="contadorUsuarios">12.483</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">Resultados compartidos</div>
+            <div class="kpi-num" id="contadorShares">1.907</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-label">Promedio de horas sanitarias</div>
+            <div class="kpi-num">8.214</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sidebar-title">🚀 Compartir directo</div>
+        <div class="sidebar-sub">Calculá primero y los botones se activan automáticamente.</div>
+        <div class="social-btns" style="margin-top:0">
+          <button class="btn btn-wa" onclick="shareWhatsApp()">WhatsApp</button>
+          <button class="btn btn-x"  onclick="shareX()">Twitter / X</button>
+          <button class="btn btn-li" onclick="shareLinkedIn()">LinkedIn</button>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- AD SLOT 2: SIDEBAR RECTANGLE — 300×250 px                   -->
+      <!-- Reemplazá con tu código de AdSense o banner de patrocinador  -->
+      <!-- ============================================================ -->
+      <div class="ad-block ad-rectangle" id="ad-sidebar">
+        <div style="width:100%">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-placeholder" style="margin-top:8px">Banner 300×250 — AdSense / Patrocinio</div>
+        </div>
+      </div>
+
+      <!-- <div class="card">
+        <div class="sidebar-title">🎯 Dónde pegar tus pixels</div>
+        <p style="font-size:13px;color:var(--muted2);line-height:1.5;margin-top:6px">Pegá Meta Pixel, Google Analytics o GTM en la zona del <code style="background:var(--card2);padding:2px 6px;border-radius:6px;font-size:11px">&lt;head&gt;</code> marcada en el código.</p>
+      </div>
+    </aside>
+  </div> -->
+
+  <!-- How it works -->
+  <h2 class="section-title">Cómo funciona</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Cargás tus datos</h3>
+      <p>Años trabajados, horas por día, visitas diarias, minutos por visita y sueldo mensual.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>La calculadora hace cuentas</h3>
+      <p>Convierte ese hábito en horas, días, años, porcentaje de jornada y dinero cobrado.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Lo compartís y te reís</h3>
+      <p>Genera un texto listo para redes y un PNG para historias, posteos o el grupo del trabajo.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- AD SLOT 3: BANNER INFERIOR — 468×60 px                      -->
+  <!-- ============================================================ -->
+  <div class="ad-block ad-banner" id="ad-bottom">
+    <span class="ad-label">Publicidad</span>
+    <span class="ad-placeholder">Banner 468×60 — AdSense / Afiliado / CTA comercial</span>
+  </div>
+
+  <!-- Lead capture -->
+  <div class="lead-box">
+    <h2>¿Querés más calculadoras absurdamente útiles?</h2>
+    <p>Dejá tu email y te avisamos cuando lancemos la próxima. Sin spam, solo humor productivo.</p>
+    <div class="lead-form">
+      <input type="email" id="leadEmail" placeholder="tu@email.com" />
+      <button type="button" onclick="capturarLead()">Me anoto →</button>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testimonials">
+    <div class="quote">
+      "Entré por curiosidad, me quedé por el nivel de impunidad matemática."
+      <span class="quote-author">— Analista cansado</span>
+    </div>
+    <div class="quote">
+      "Jamás pensé que una pausa sanitaria pudiera tener tanto valor económico."
+      <span class="quote-author">— Administrativo sorprendido</span>
+    </div>
+    <div class="quote">
+      "La compartí en el grupo del trabajo y se armó debate serio."
+      <span class="quote-author">— Coordinadora de oficina</span>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <div class="faq-item">
+      <h3>¿Esto es exacto?</h3>
+      <p>No. Es una calculadora humorística. Usa una aproximación simple basada en 5 días por semana y 52 semanas por año, sin contar feriados ni vacaciones.</p>
+    </div>
+    <div class="faq-item">
+      <h3>¿Contempla home office, feriados y vacaciones?</h3>
+      <p>No. Se dejó afuera a propósito para mantener la cuenta simple, divertida y ligeramente escandalosa.</p>
+    </div>
+    <!--<div class="faq-item">
+      <h3>¿Puedo usarla para campañas virales?</h3>
+      <p>Sí. La landing ya está pensada con CTA, share social, bloques de anuncios y zona para píxeles de tracking.</p>
+    </div>
+    <div class="faq-item">
+      <h3>¿Cómo monetizo el tráfico?</h3>
+      <p>Podés usar Google AdSense en los bloques marcados, vender patrocinios directos, usar links de afiliados o capturar leads con el formulario de email.</p>
+    </div>
+  </div>
+
+  Publish guide -->
+  <!--<h2 class="section-title">Publicación rápida</h2>
+  <div class="publish-grid">
+    <div class="publish-card">
+      <strong>Vercel ⭐</strong>
+      <p>Arrastrá este index.html al dashboard de Vercel. Tenés dominio .vercel.app gratis en segundos.</p>
+    </div>
+    <div class="publish-card">
+      <strong>Netlify</strong>
+      <p>Subís el archivo como carpeta. Ideal para salir rápido sin cuenta de GitHub.</p>
+    </div>
+    <div class="publish-card">
+      <strong>GitHub Pages</strong>
+      <p>Gratis y con control de versiones si querés iterar el proyecto.</p>
+    </div>
+  </div>
+  <div class="codebox">
+1) Guardá este archivo como index.html
+2) Entrá a vercel.com → New Project → "Deploy without Git"
+3) Arrastrá la carpeta con el index.html
+4) Reemplazá "tu-dominio.vercel.app" por tu URL real en los meta tags og:url y og:image
+5) Creá una imagen 1200×630 px y subila como og-image.png en la misma carpeta
+6) Pegá tus pixels de Meta y Google Analytics en la zona marcada del &lt;head&gt;
+7) Reemplazá los bloques .ad-block con tu código real de AdSense
+8) Publicá y empezá a compartir</div> -->
+
+  <footer>
+    <p>💩 Calculadora humorística de productividad sanitaria.</p>
+    <p style="margin-top:4px">No incluye feriados, vacaciones, home office, mate ni scroll infinito en el celular.</p>
+  </footer>
+</div>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta">
+  <div class="s-label"><strong>¿Cuánto tiempo pasaste en el baño?</strong><br>Hacé tu cálculo y mandalo al grupo del trabajo.</div>
+  <button class="s-btn" onclick="document.getElementById('calc').scrollIntoView({behavior:'smooth'})">Ir a la calculadora</button>
+</div>
+
+<div class="toast" id="toast">Copiado</div>
+
+<!-- PNG export target (oculto) -->
+<div id="png-target">
+  <div class="png-header">Mi resultado 💩</div>
+  <div class="png-sub">Calculadora de Baño Laboral — resultado oficial</div>
+  <div class="png-grid">
+    <div class="png-stat"><div class="k">Horas en el baño</div><div class="v" id="pngHoras">—</div></div>
+    <div class="png-stat"><div class="k">Días equivalentes</div><div class="v" id="pngDias">—</div></div>
+    <div class="png-stat"><div class="k">Años laborales</div><div class="v" id="pngAnos">—</div></div>
+    <div class="png-stat"><div class="k">Dinero cobrado</div><div class="v" id="pngDinero">—</div></div>
+    <div class="png-stat"><div class="k">% de la jornada</div><div class="v" id="pngPct">—</div></div>
+    <div class="png-stat"><div class="k">Jornadas completas</div><div class="v" id="pngJornadas">—</div></div>
+  </div>
+  <div class="png-rank" id="pngRank">—</div>
+  <div class="png-footer">
+    <span id="pngPercentile">—</span>
+    <span class="png-poop">💩</span>
+  </div>
+</div>
+
+<script>
+let textoCompartir = '';
+let calculado = false;
+
+function n(id){ return Number(document.getElementById(id).value || 0); }
+
+function fmt(n){
+  return new Intl.NumberFormat('es-AR').format(Math.round(n));
+}
+function money(n){
+  return new Intl.NumberFormat('es-AR', {
+    style:'currency', currency:'ARS', maximumFractionDigits:0
+  }).format(n);
+}
+
+function toast(msg, color){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  if(color) t.style.background = color;
+  else t.style.background = 'var(--accent)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+function getRank(horasTot){
+  if(horasTot < 200) return {
+    emoji:'🥉', name:'Empleado Normal',
+    desc:'Todavía mantenés una relación razonable con el baño laboral.',
+    cls:'badge-bronze', pct: 20
+  };
+  if(horasTot < 800) return {
+    emoji:'🥈', name:'Experto Sanitario',
+    desc:'Ya desarrollaste oficio, técnica y permanencia competitiva.',
+    cls:'badge-silver', pct: 55
+  };
+  if(horasTot < 2000) return {
+    emoji:'🥇', name:'Maestro del Trono',
+    desc:'Lo tuyo ya no es una costumbre: es una disciplina de alto rendimiento.',
+    cls:'badge-gold', pct: 78
+  };
+  return {
+    emoji:'👑', name:'Leyenda Sanitaria',
+    desc:'Deberías cobrar royalties. Tu contribución al ecosistema del baño laboral es histórica.',
+    cls:'badge-gold', pct: 95
+  };
+}
+
+function getPercentileText(pct){
+  if(pct < 30) return `Estás en el ${pct}% superior — aún hay margen para crecer como profesional sanitario.`;
+  if(pct < 60) return `Superás al ${pct}% de los usuarios — un rendimiento respetable en el trono.`;
+  if(pct < 85) return `Estás entre el ${pct}% más destacado — claramente tomás en serio tus pausas.`;
+  return `Top ${100 - pct}% de la nación — tu desempeño sanitario es de élite mundial.`;
+}
+
+function calcular(){
+  const anos    = n('anos');
+  const horas   = n('horas');
+  const veces   = n('veces');
+  const minutos = n('minutos');
+  const sueldo  = n('sueldo');
+
+  if([anos, horas, veces, minutos, sueldo].some(v => v <= 0)){
+    toast('Completá todos los campos con valores mayores a 0', '#ff5c5c');
+    return;
+  }
+
+  const dias        = anos * 52 * 5;
+  const minutosTot  = dias * veces * minutos;
+  const horasTot    = minutosTot / 60;
+  const diasTot     = horasTot / 24;
+  const anosTot     = diasTot / 365;
+  const horasMes    = horas * 5 * 4.33;
+  const valorHora   = sueldo / horasMes;
+  const dinero      = horasTot * valorHora;
+  const porcentaje  = (veces * minutos) / (horas * 60) * 100;
+  const jornadas    = horasTot / horas;
+
+  document.getElementById('horasOut').textContent    = fmt(horasTot)     + ' h';
+  document.getElementById('diasOut').textContent     = fmt(diasTot)      + ' días';
+  document.getElementById('anosOut').textContent     = anosTot.toFixed(2)+ ' años';
+  document.getElementById('dineroOut').textContent   = money(dinero);
+  document.getElementById('porcentajeOut').textContent = porcentaje.toFixed(1) + '%';
+  document.getElementById('jornadasOut').textContent = fmt(jornadas);
+
+  const rank = getRank(horasTot);
+  document.getElementById('rankEmoji').textContent = rank.emoji;
+  document.getElementById('rankName').textContent  = rank.name;
+  document.getElementById('rankDesc').textContent  = rank.desc;
+  const badge = document.getElementById('rankBadge');
+  badge.textContent  = rank.name;
+  badge.className    = 'rank-badge ' + rank.cls;
+
+  // Percentile
+  const pctText = getPercentileText(rank.pct);
+  document.getElementById('percentileText').textContent = pctText;
+  setTimeout(() => {
+    document.getElementById('barFill').style.width = rank.pct + '%';
+  }, 150);
+
+  // Share text
+  textoCompartir =
+    '💩 Hice la Calculadora de Baño Laboral y mi resultado es vergonzoso:\n\n' +
+    '⏱ Horas en el baño: '    + fmt(horasTot)      + '\n' +
+    '📅 Días equivalentes: '   + fmt(diasTot)       + '\n' +
+    '📆 Años laborales: '      + anosTot.toFixed(2) + '\n' +
+    '💰 Dinero cobrado ahí: '  + money(dinero)      + '\n' +
+    '📊 ' + pctText            + '\n' +
+    '🏆 Rango: '               + rank.emoji + ' ' + rank.name + '\n\n' +
+    '🚽 Calculá el tuyo: [URL de tu landing]';
+
+  document.getElementById('shareText').value = textoCompartir;
+
+  // PNG target update
+  document.getElementById('pngHoras').textContent    = fmt(horasTot)     + ' h';
+  document.getElementById('pngDias').textContent     = fmt(diasTot)      + ' días';
+  document.getElementById('pngAnos').textContent     = anosTot.toFixed(2)+ ' años';
+  document.getElementById('pngDinero').textContent   = money(dinero);
+  document.getElementById('pngPct').textContent      = porcentaje.toFixed(1) + '%';
+  document.getElementById('pngJornadas').textContent = fmt(jornadas);
+  document.getElementById('pngRank').textContent     = rank.emoji + ' ' + rank.name + ' — ' + rank.desc;
+  document.getElementById('pngPercentile').textContent = pctText;
+
+  document.getElementById('resultado').classList.add('show');
+  calculado = true;
+
+  // Increment counters
+  const cu = document.getElementById('contadorUsuarios');
+  const cs = document.getElementById('contadorShares');
+  cu.textContent = fmt(Number(cu.textContent.replace(/\./g,'').replace(/,/g,'')) + 1);
+  cs.textContent = fmt(Number(cs.textContent.replace(/\./g,'').replace(/,/g,'')) + Math.floor(Math.random()*3));
+}
+
+function copiarTexto(){
+  if(!calculado){ toast('Calculá primero tus datos 💩', '#ff5c5c'); return; }
+  navigator.clipboard.writeText(document.getElementById('shareText').value)
+    .then(()  => toast('Texto copiado ✓'))
+    .catch(()  => toast('No se pudo copiar automáticamente', '#ff5c5c'));
+}
+
+async function compartir(){
+  if(!calculado){ calcular(); return; }
+  const texto = document.getElementById('shareText').value;
+  if(navigator.share){
+    try{ await navigator.share({title:'Calculadora de Baño Laboral 💩', text:texto}); return; }
+    catch(e){}
+  }
+  copiarTexto();
+}
+
+function shareWhatsApp(){
+  if(!calculado){ toast('Calculá primero 💩', '#ff5c5c'); return; }
+  window.open('https://wa.me/?text=' + encodeURIComponent(document.getElementById('shareText').value), '_blank');
+}
+function shareX(){
+  if(!calculado){ toast('Calculá primero 💩', '#ff5c5c'); return; }
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.getElementById('shareText').value), '_blank');
+}
+function shareLinkedIn(){
+  if(!calculado){ toast('Calculá primero 💩', '#ff5c5c'); return; }
+  copiarTexto();
+  toast('Texto copiado — pegalo en LinkedIn ✓');
+  setTimeout(()=> window.open('https://www.linkedin.com/feed/', '_blank'), 600);
+}
+
+function resetear(){
+  document.querySelectorAll('input[type=number]').forEach(i => {
+    const defaults = {anos:'10',horas:'9',veces:'3',minutos:'15',sueldo:'800000'};
+    i.value = defaults[i.id] || 0;
+  });
+  document.getElementById('resultado').classList.remove('show');
+  document.getElementById('barFill').style.width = '0%';
+  document.getElementById('shareText').value = '';
+  textoCompartir = '';
+  calculado = false;
+  toast('Formulario reiniciado');
+}
+
+async function descargarImagen(){
+  if(!calculado){ toast('Calculá primero tus datos 💩', '#ff5c5c'); return; }
+
+  const target = document.getElementById('png-target');
+  target.style.left = '0';
+  target.style.position = 'absolute';
+  target.style.zIndex = '-1';
+
+  try {
+    const canvas = await html2canvas(target, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#111111',
+      logging: false
+    });
+    target.style.left = '-9999px';
+    target.style.position = 'fixed';
+
+    const a = document.createElement('a');
+    a.download = 'resultado-bano-laboral.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+    toast('Imagen descargada ✓');
+  } catch(e){
+    target.style.left = '-9999px';
+    target.style.position = 'fixed';
+    toast('Error al generar la imagen', '#ff5c5c');
+  }
+}
+
+function capturarLead(){
+  const email = document.getElementById('leadEmail').value.trim();
+  if(!email || !email.includes('@')){
+    toast('Ingresá un email válido', '#ff5c5c');
+    return;
+  }
+  // Conectar con Mailchimp / Brevo / TallyForms aquí
+  toast('¡Anotado! Te avisamos cuando lancemos más 🚽');
+  document.getElementById('leadEmail').value = '';
+}
+</script>
+</body>
+</html>
