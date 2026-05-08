@@ -4,18 +4,30 @@ export default async function handler(req, res) {
   }
 
   try {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      return res.status(500).json({
+        error: 'Faltan variables de entorno en Vercel'
+      });
+    }
+
+    const cleanUrl = supabaseUrl.replace(/\/$/, '');
+    const endpoint = `${cleanUrl}/rest/v1/resultados`;
+
     const { email, horas, dias, anos, dinero, rank, percentile } = req.body;
 
     if (!email || !email.includes('@')) {
       return res.status(400).json({ error: 'Email inválido' });
     }
 
-    const response = await fetch(`${process.env.SUPABASE_URL}/rest/v1/resultados`, {
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        apikey: process.env.SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
         Prefer: 'return=minimal'
       },
       body: JSON.stringify({
@@ -30,12 +42,20 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      const error = await response.text();
-      return res.status(500).json({ error });
+      const errorText = await response.text();
+
+      return res.status(500).json({
+        error: errorText,
+        status: response.status
+      });
     }
 
     return res.status(200).json({ ok: true });
-  } catch (e) {
-    return res.status(500).json({ error: e.message });
+
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message,
+      cause: error.cause?.message || null
+    });
   }
 }
