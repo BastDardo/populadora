@@ -1081,52 +1081,93 @@ function n(id){ return Number(document.getElementById(id).value || 0); }
 function fmt(n){
   return new Intl.NumberFormat('es-AR').format(Math.round(n));
 }
+
 function money(n){
   return new Intl.NumberFormat('es-AR', {
-    style:'currency', currency:'ARS', maximumFractionDigits:0
+    style:'currency',
+    currency:'ARS',
+    maximumFractionDigits:0
   }).format(n);
 }
 
 function toast(msg, color){
   const t = document.getElementById('toast');
+
   t.textContent = msg;
-  if(color) t.style.background = color;
-  else t.style.background = 'var(--accent)';
+
+  if(color){
+    t.style.background = color;
+  } else {
+    t.style.background = 'var(--accent)';
+  }
+
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2400);
+
+  setTimeout(() => {
+    t.classList.remove('show');
+  }, 2400);
 }
 
 function getRank(horasTot){
-  if(horasTot < 200) return {
-    emoji:'🥉', name:'Empleado Normal',
-    desc:'Todavía mantenés una relación razonable con el baño laboral.',
-    cls:'badge-bronze', pct: 20
-  };
-  if(horasTot < 800) return {
-    emoji:'🥈', name:'Experto Sanitario',
-    desc:'Ya desarrollaste oficio, técnica y permanencia competitiva.',
-    cls:'badge-silver', pct: 55
-  };
-  if(horasTot < 2000) return {
-    emoji:'🥇', name:'Maestro del Trono',
-    desc:'Lo tuyo ya no es una costumbre: es una disciplina de alto rendimiento.',
-    cls:'badge-gold', pct: 78
-  };
+
+  if(horasTot < 200){
+    return {
+      emoji:'🥉',
+      name:'Empleado Normal',
+      desc:'Todavía mantenés una relación razonable con el baño laboral.',
+      cls:'badge-bronze',
+      pct:20
+    };
+  }
+
+  if(horasTot < 800){
+    return {
+      emoji:'🥈',
+      name:'Experto Sanitario',
+      desc:'Ya desarrollaste oficio, técnica y permanencia competitiva.',
+      cls:'badge-silver',
+      pct:55
+    };
+  }
+
+  if(horasTot < 2000){
+    return {
+      emoji:'🥇',
+      name:'Maestro del Trono',
+      desc:'Lo tuyo ya no es una costumbre: es una disciplina de alto rendimiento.',
+      cls:'badge-gold',
+      pct:78
+    };
+  }
+
   return {
-    emoji:'👑', name:'Leyenda Sanitaria',
+    emoji:'👑',
+    name:'Leyenda Sanitaria',
     desc:'Deberías cobrar royalties. Tu contribución al ecosistema del baño laboral es histórica.',
-    cls:'badge-gold', pct: 95
+    cls:'badge-gold',
+    pct:95
   };
 }
 
 function getPercentileText(pct){
-  if(pct < 30) return `Estás en el ${pct}% superior — aún hay margen para crecer como profesional sanitario.`;
-  if(pct < 60) return `Superás al ${pct}% de los usuarios — un rendimiento respetable en el trono.`;
-  if(pct < 85) return `Estás entre el ${pct}% más destacado — claramente tomás en serio tus pausas.`;
+
+  if(pct < 30){
+    return `Estás en el ${pct}% superior — aún hay margen para crecer como profesional sanitario.`;
+  }
+
+  if(pct < 60){
+    return `Superás al ${pct}% de los usuarios — un rendimiento respetable en el trono.`;
+  }
+
+  if(pct < 85){
+    return `Estás entre el ${pct}% más destacado — claramente tomás en serio tus pausas.`;
+  }
+
   return `Top ${100 - pct}% de la nación — tu desempeño sanitario es de élite mundial.`;
 }
 
 function calcular(){
+
   const anos    = n('anos');
   const horas   = n('horas');
   const veces   = n('veces');
@@ -1149,25 +1190,43 @@ function calcular(){
   const porcentaje  = (veces * minutos) / (horas * 60) * 100;
   const jornadas    = horasTot / horas;
 
-  document.getElementById('horasOut').textContent    = fmt(horasTot)     + ' h';
-  document.getElementById('diasOut').textContent     = fmt(diasTot)      + ' días';
-  document.getElementById('anosOut').textContent     = anosTot.toFixed(2)+ ' años';
-  document.getElementById('dineroOut').textContent   = money(dinero);
-  document.getElementById('porcentajeOut').textContent = porcentaje.toFixed(1) + '%';
-  document.getElementById('jornadasOut').textContent = fmt(jornadas);
+  document.getElementById('horasOut').textContent =
+    fmt(horasTot) + ' h';
+
+  document.getElementById('diasOut').textContent =
+    fmt(diasTot) + ' días';
+
+  document.getElementById('anosOut').textContent =
+    anosTot.toFixed(2) + ' años';
+
+  document.getElementById('dineroOut').textContent =
+    money(dinero);
+
+  document.getElementById('porcentajeOut').textContent =
+    porcentaje.toFixed(1) + '%';
+
+  document.getElementById('jornadasOut').textContent =
+    fmt(jornadas);
 
   const rank = getRank(horasTot);
-  document.getElementById('rankEmoji').textContent = rank.emoji;
-  document.getElementById('rankName').textContent  = rank.name;
-  document.getElementById('rankDesc').textContent  = rank.desc;
-  const badge = document.getElementById('rankBadge');
-  badge.textContent  = rank.name;
-  badge.className    = 'rank-badge ' + rank.cls;
 
-  // Percentile
+  document.getElementById('rankEmoji').textContent =
+    rank.emoji;
+
+  document.getElementById('rankName').textContent =
+    rank.name;
+
+  document.getElementById('rankDesc').textContent =
+    rank.desc;
+
+  const badge = document.getElementById('rankBadge');
+
+  badge.textContent = rank.name;
+  badge.className = 'rank-badge ' + rank.cls;
+
   const pctText = getPercentileText(rank.pct);
 
-  // Último resultado calculado: lo usamos para guardar en Supabase.
+  // GUARDAMOS DATOS LIMPIOS PARA SUPABASE
   ultimoResultado = {
     horas: Math.round(horasTot),
     dias: Math.round(diasTot),
@@ -1177,12 +1236,14 @@ function calcular(){
     percentile: pctText
   };
 
-  document.getElementById('percentileText').textContent = pctText;
+  document.getElementById('percentileText').textContent =
+    pctText;
+
   setTimeout(() => {
-    document.getElementById('barFill').style.width = rank.pct + '%';
+    document.getElementById('barFill').style.width =
+      rank.pct + '%';
   }, 150);
 
-  // Share text
   textoCompartir =
     '💩 Hice la Caculadora y mi resultado es glorioso:\n\n' +
     '⏱️ Horas ganadas en el baño: ' + fmt(horasTot) + '\n' +
@@ -1193,105 +1254,213 @@ function calcular(){
     '🏆 Rango: ' + rank.emoji + ' ' + rank.name + '\n\n' +
     '🚽 Calculá el tuyo: https://caculadora.com.ar/';
 
-  document.getElementById('shareText').value = textoCompartir;
+  document.getElementById('shareText').value =
+    textoCompartir;
 
-  // PNG target update
-  document.getElementById('pngHoras').textContent    = fmt(horasTot)     + ' h';
-  document.getElementById('pngDias').textContent     = fmt(diasTot)      + ' días';
-  document.getElementById('pngAnos').textContent     = anosTot.toFixed(2)+ ' años';
-  document.getElementById('pngDinero').textContent   = money(dinero);
-  document.getElementById('pngPct').textContent      = porcentaje.toFixed(1) + '%';
-  document.getElementById('pngJornadas').textContent = fmt(jornadas);
-  document.getElementById('pngRank').textContent     = rank.emoji + ' ' + rank.name + ' — ' + rank.desc;
-  document.getElementById('pngPercentile').textContent = pctText;
+  // PNG
+  document.getElementById('pngHoras').textContent =
+    fmt(horasTot) + ' h';
+
+  document.getElementById('pngDias').textContent =
+    fmt(diasTot) + ' días';
+
+  document.getElementById('pngAnos').textContent =
+    anosTot.toFixed(2) + ' años';
+
+  document.getElementById('pngDinero').textContent =
+    money(dinero);
+
+  document.getElementById('pngPct').textContent =
+    porcentaje.toFixed(1) + '%';
+
+  document.getElementById('pngJornadas').textContent =
+    fmt(jornadas);
+
+  document.getElementById('pngRank').textContent =
+    rank.emoji + ' ' + rank.name + ' — ' + rank.desc;
+
+  document.getElementById('pngPercentile').textContent =
+    pctText;
 
   document.getElementById('resultado').classList.add('show');
+
   calculado = true;
 
-  // Increment counters
+  // COUNTERS
   const cu = document.getElementById('contadorUsuarios');
   const cs = document.getElementById('contadorShares');
-  cu.textContent = fmt(Number(cu.textContent.replace(/\./g,'').replace(/,/g,'')) + 1);
-  cs.textContent = fmt(Number(cs.textContent.replace(/\./g,'').replace(/,/g,'')) + Math.floor(Math.random()*3));
+
+  cu.textContent = fmt(
+    Number(cu.textContent.replace(/\./g,'').replace(/,/g,'')) + 1
+  );
+
+  cs.textContent = fmt(
+    Number(cs.textContent.replace(/\./g,'').replace(/,/g,'')) +
+    Math.floor(Math.random() * 3)
+  );
 }
 
 function copiarTexto(){
-  if(!calculado){ toast('Calculá primero tus datos 💩', '#ff5c5c'); return; }
-  navigator.clipboard.writeText(document.getElementById('shareText').value)
-    .then(()  => toast('Texto copiado ✓'))
-    .catch(()  => toast('No se pudo copiar automáticamente', '#ff5c5c'));
+
+  if(!calculado){
+    toast('Calculá primero tus datos 💩', '#ff5c5c');
+    return;
+  }
+
+  navigator.clipboard
+    .writeText(document.getElementById('shareText').value)
+    .then(() => toast('Texto copiado ✓'))
+    .catch(() => toast('No se pudo copiar automáticamente', '#ff5c5c'));
 }
 
 async function compartir(){
-  if(!calculado){ calcular(); return; }
-  const texto = document.getElementById('shareText').value;
-  if(navigator.share){
-    try{ await navigator.share({title:'La Caculadora 💩', text:texto, url:'https://caculadora.com.ar/'}); return; }
-    catch(e){}
+
+  if(!calculado){
+    calcular();
+    return;
   }
+
+  const texto = document.getElementById('shareText').value;
+
+  if(navigator.share){
+
+    try {
+
+      await navigator.share({
+        title:'La Caculadora 💩',
+        text:texto,
+        url:'https://caculadora.com.ar/'
+      });
+
+      return;
+
+    } catch(e){}
+  }
+
   copiarTexto();
 }
 
 function shareWhatsApp(){
-  if(!calculado){ toast('Calculá primero 💩', '#ff5c5c'); return; }
-  window.open('https://wa.me/?text=' + encodeURIComponent(document.getElementById('shareText').value), '_blank');
+
+  if(!calculado){
+    toast('Calculá primero 💩', '#ff5c5c');
+    return;
+  }
+
+  window.open(
+    'https://wa.me/?text=' +
+    encodeURIComponent(document.getElementById('shareText').value),
+    '_blank'
+  );
 }
+
 function shareX(){
-  if(!calculado){ toast('Calculá primero 💩', '#ff5c5c'); return; }
-  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.getElementById('shareText').value), '_blank');
+
+  if(!calculado){
+    toast('Calculá primero 💩', '#ff5c5c');
+    return;
+  }
+
+  window.open(
+    'https://twitter.com/intent/tweet?text=' +
+    encodeURIComponent(document.getElementById('shareText').value),
+    '_blank'
+  );
 }
+
 function shareLinkedIn(){
-  if(!calculado){ toast('Calculá primero 💩', '#ff5c5c'); return; }
+
+  if(!calculado){
+    toast('Calculá primero 💩', '#ff5c5c');
+    return;
+  }
+
   copiarTexto();
+
   toast('Texto copiado — pegalo en LinkedIn ✓');
-  setTimeout(()=> window.open('https://www.linkedin.com/feed/', '_blank'), 600);
+
+  setTimeout(() => {
+    window.open('https://www.linkedin.com/feed/', '_blank');
+  }, 600);
 }
 
 function resetear(){
+
   document.querySelectorAll('input[type=number]').forEach(i => {
-    const defaults = {anos:'10',horas:'9',veces:'3',minutos:'15',sueldo:'800000'};
+
+    const defaults = {
+      anos:'10',
+      horas:'9',
+      veces:'3',
+      minutos:'15',
+      sueldo:'800000'
+    };
+
     i.value = defaults[i.id] || 0;
   });
+
   document.getElementById('resultado').classList.remove('show');
+
   document.getElementById('barFill').style.width = '0%';
+
   document.getElementById('shareText').value = '';
+
   textoCompartir = '';
+
   calculado = false;
+
+  ultimoResultado = null;
+
   toast('Formulario reiniciado');
 }
 
 async function descargarImagen(){
-  if(!calculado){ toast('Calculá primero tus datos 💩', '#ff5c5c'); return; }
+
+  if(!calculado){
+    toast('Calculá primero tus datos 💩', '#ff5c5c');
+    return;
+  }
 
   const target = document.getElementById('png-target');
+
   target.style.left = '0';
   target.style.position = 'absolute';
   target.style.zIndex = '-1';
 
   try {
+
     const canvas = await html2canvas(target, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: '#111111',
-      logging: false
+      scale:2,
+      useCORS:true,
+      backgroundColor:'#111111',
+      logging:false
     });
+
     target.style.left = '-9999px';
     target.style.position = 'fixed';
 
     const a = document.createElement('a');
+
     a.download = 'resultado-bano-laboral.png';
     a.href = canvas.toDataURL('image/png');
+
     a.click();
+
     toast('Imagen descargada ✓');
+
   } catch(e){
+
     target.style.left = '-9999px';
     target.style.position = 'fixed';
+
     toast('Error al generar la imagen', '#ff5c5c');
   }
 }
 
 async function capturarLead(){
-  const email = document.getElementById('leadEmail').value.trim();
+
+  const email =
+    document.getElementById('leadEmail').value.trim();
 
   if(!email || !email.includes('@')){
     toast('Ingresá un email válido', '#ff5c5c');
@@ -1300,15 +1469,20 @@ async function capturarLead(){
 
   if(!calculado || !ultimoResultado){
     toast('Primero hacé el cálculo 💩', '#ff5c5c');
-    document.getElementById('calc').scrollIntoView({behavior:'smooth'});
+
+    document
+      .getElementById('calc')
+      .scrollIntoView({behavior:'smooth'});
+
     return;
   }
 
   try {
+
     const response = await fetch('/api/save-result', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
       },
       body: JSON.stringify({
         email: email,
@@ -1324,15 +1498,22 @@ async function capturarLead(){
     const data = await response.json();
 
     if(data.ok){
+
       toast('Resultado guardado 🚀');
+
       document.getElementById('leadEmail').value = '';
+
     } else {
+
       console.error(data);
+
       toast('Error guardando resultado', '#ff5c5c');
     }
 
   } catch(error){
+
     console.error(error);
+
     toast('Error de conexión', '#ff5c5c');
   }
 }
