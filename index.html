@@ -1001,11 +1001,11 @@ footer {
   </div>
 <!-- Lead capture -->
   <div class="lead-box">
-    <h2>¿Querés más calculadoras absurdamente útiles?</h2>
-    <p>Dejá tu email para guardar tu resultado y recibir futuras herramientas. Sin spam, solo humor productivo.</p>
+    <h2>¿Querés guardar tu resultado?</h2>
+    <p>Dejá tu email y guardamos tu cálculo. También podremos avisarte cuando lancemos nuevas calculadoras absurdamente útiles. Sin spam.</p>
     <div class="lead-form">
       <input type="email" id="leadEmail" placeholder="tu@email.com" />
-      <button type="button" onclick="capturarLead()">Me anoto →</button>
+      <button type="button" onclick="capturarLead()">Guardar resultado →</button>
     </div>
   </div>
 
@@ -1074,6 +1074,7 @@ footer {
 <script>
 let textoCompartir = '';
 let calculado = false;
+let ultimoResultado = null;
 
 function n(id){ return Number(document.getElementById(id).value || 0); }
 
@@ -1165,6 +1166,17 @@ function calcular(){
 
   // Percentile
   const pctText = getPercentileText(rank.pct);
+
+  // Último resultado calculado: lo usamos para guardar en Supabase.
+  ultimoResultado = {
+    horas: Math.round(horasTot),
+    dias: Math.round(diasTot),
+    anos: Number(anosTot.toFixed(2)),
+    dinero: Math.round(dinero),
+    rank: rank.name,
+    percentile: pctText
+  };
+
   document.getElementById('percentileText').textContent = pctText;
   setTimeout(() => {
     document.getElementById('barFill').style.width = rank.pct + '%';
@@ -1278,17 +1290,52 @@ async function descargarImagen(){
   }
 }
 
-function capturarLead(){
+async function capturarLead(){
   const email = document.getElementById('leadEmail').value.trim();
+
   if(!email || !email.includes('@')){
     toast('Ingresá un email válido', '#ff5c5c');
     return;
   }
-  // Próximo paso: conectar este formulario con Supabase mediante /api/save-result.
-  toast('¡Anotado! Te avisamos cuando lancemos más 🚽');
-  document.getElementById('leadEmail').value = '';
+
+  if(!calculado || !ultimoResultado){
+    toast('Primero hacé el cálculo 💩', '#ff5c5c');
+    document.getElementById('calc').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/save-result', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        horas: ultimoResultado.horas,
+        dias: ultimoResultado.dias,
+        anos: ultimoResultado.anos,
+        dinero: ultimoResultado.dinero,
+        rank: ultimoResultado.rank,
+        percentile: ultimoResultado.percentile
+      })
+    });
+
+    const data = await response.json();
+
+    if(data.ok){
+      toast('Resultado guardado 🚀');
+      document.getElementById('leadEmail').value = '';
+    } else {
+      console.error(data);
+      toast('Error guardando resultado', '#ff5c5c');
+    }
+
+  } catch(error){
+    console.error(error);
+    toast('Error de conexión', '#ff5c5c');
+  }
 }
 </script>
 </body>
-</html>
 </html>
