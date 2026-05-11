@@ -1083,6 +1083,12 @@ footer {
 </div>
 
 <script>
+function trackEvent(name, params = {}) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', name, params);
+  }
+}
+
 let textoCompartir = '';
 let calculado = false;
 let ultimoResultado = null;
@@ -1188,6 +1194,12 @@ function calcular(){
   if([anos, horas, veces, minutos, sueldo].some(v => v <= 0)){
     toast('Completá todos los campos con valores mayores a 0', '#ff5c5c');
     return;
+       
+  trackEvent('calculo_realizado', {
+  horas_totales: horasTot,
+  dinero: dinero,
+  rango: rank.name
+});
   }
 
   const dias        = anos * 52 * 5;
@@ -1356,6 +1368,8 @@ function shareWhatsApp(){
   if(!calculado){
     toast('Calculá primero 💩', '#ff5c5c');
     return;
+
+  trackEvent('share_whatsapp');
   }
 
   window.open(
@@ -1370,6 +1384,8 @@ function shareX(){
   if(!calculado){
     toast('Calculá primero 💩', '#ff5c5c');
     return;
+
+trackEvent('share_x');
   }
 
   window.open(
@@ -1384,6 +1400,8 @@ function shareLinkedIn(){
   if(!calculado){
     toast('Calculá primero 💩', '#ff5c5c');
     return;
+
+trackEvent('share_linkedin');
   }
 
   copiarTexto();
@@ -1430,6 +1448,7 @@ async function descargarImagen(){
   if(!calculado){
     toast('Calculá primero tus datos 💩', '#ff5c5c');
     return;
+  trackEvent('descarga_png');
   }
 
   const target = document.getElementById('png-target');
@@ -1511,6 +1530,7 @@ async function capturarLead(){
     if(data.ok){
 
       toast('Resultado guardado 🚀');
+      trackEvent('resultado_guardado');
 
       document.getElementById('leadEmail').value = '';
 
