@@ -1453,7 +1453,7 @@ async function capturarLead(){
     console.error(error);
     toast('Error de conexión', '#ff5c5c');
   }
-  async function cargarStats(){
+ async function cargarStats(){
   const usuariosEl = document.getElementById('contadorUsuarios');
   const sharesEl = document.getElementById('contadorShares');
   const promedioEl = document.getElementById('promedioGanado');
@@ -1462,10 +1462,6 @@ async function capturarLead(){
     console.warn('No se encontraron los elementos de stats');
     return;
   }
-
-  usuariosEl.textContent = '...';
-  sharesEl.textContent = '...';
-  promedioEl.textContent = '...';
 
   try {
     const response = await fetch('/api/stats?ts=' + Date.now(), {
@@ -1494,7 +1490,7 @@ async function capturarLead(){
   }
 }
 
-window.addEventListener('load', cargarStats);
+cargarStats();
 </script>
 </body>
 </html>
