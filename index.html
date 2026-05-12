@@ -962,10 +962,10 @@ footer {
     <aside class="sidebar">
       <div class="card">
         <div class="sidebar-title">📊 Indicadores virales</div>
-        <div class="sidebar-sub">Valores demostrativos para darle contexto al juego.</div>
+        <div class="sidebar-sub">Datos reales guardados por La Caculadora.</div>
         <div class="kpi-list">
           <div class="kpi-item">
-            <div class="kpi-label">Cálculos realizados hoy</div>
+            <div class="kpi-label">Cálculos realizados</div>
             <div class="kpi-num" id="contadorUsuarios">—</div>
           </div>
           <div class="kpi-item">
@@ -1455,25 +1455,31 @@ async function capturarLead(){
   }
   async function cargarStats(){
   try {
-    const response = await fetch('/api/stats');
+    const response = await fetch('/api/stats', {
+      cache: 'no-store'
+    });
+
     const data = await response.json();
 
     document.getElementById('contadorUsuarios').textContent =
       fmt(data.total || 0);
 
     document.getElementById('contadorShares').textContent =
-      fmt(Math.floor((data.total || 0) * 0.62));
+      fmt(data.sharesEstimados || 0);
 
     document.getElementById('promedioGanado').textContent =
-      'Calculando';
+      money(data.promedioDinero || 0);
+
   } catch(e){
     console.error(e);
+
+    document.getElementById('contadorUsuarios').textContent = '—';
+    document.getElementById('contadorShares').textContent = '—';
+    document.getElementById('promedioGanado').textContent = '—';
   }
 }
 
-cargarStats();
-
-cargarStats();
+document.addEventListener('DOMContentLoaded', cargarStats);
 }
 </script>
 </body>
