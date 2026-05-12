@@ -1454,33 +1454,47 @@ async function capturarLead(){
     toast('Error de conexión', '#ff5c5c');
   }
   async function cargarStats(){
+  const usuariosEl = document.getElementById('contadorUsuarios');
+  const sharesEl = document.getElementById('contadorShares');
+  const promedioEl = document.getElementById('promedioGanado');
+
+  if(!usuariosEl || !sharesEl || !promedioEl){
+    console.warn('No se encontraron los elementos de stats');
+    return;
+  }
+
+  usuariosEl.textContent = '...';
+  sharesEl.textContent = '...';
+  promedioEl.textContent = '...';
+
   try {
-    const response = await fetch('/api/stats', {
+    const response = await fetch('/api/stats?ts=' + Date.now(), {
       cache: 'no-store'
     });
 
     const data = await response.json();
 
-    document.getElementById('contadorUsuarios').textContent =
-      fmt(data.total || 0);
+    if(!response.ok){
+      console.error('Error stats:', data);
+      usuariosEl.textContent = '—';
+      sharesEl.textContent = '—';
+      promedioEl.textContent = '—';
+      return;
+    }
 
-    document.getElementById('contadorShares').textContent =
-      fmt(data.sharesEstimados || 0);
+    usuariosEl.textContent = fmt(data.total || 0);
+    sharesEl.textContent = fmt(data.sharesEstimados || 0);
+    promedioEl.textContent = money(data.promedioDinero || 0);
 
-    document.getElementById('promedioGanado').textContent =
-      money(data.promedioDinero || 0);
-
-  } catch(e){
-    console.error(e);
-
-    document.getElementById('contadorUsuarios').textContent = '—';
-    document.getElementById('contadorShares').textContent = '—';
-    document.getElementById('promedioGanado').textContent = '—';
+  } catch(error){
+    console.error('Error cargando stats:', error);
+    usuariosEl.textContent = '—';
+    sharesEl.textContent = '—';
+    promedioEl.textContent = '—';
   }
 }
 
-document.addEventListener('DOMContentLoaded', cargarStats);
-}
+window.addEventListener('load', cargarStats);
 </script>
 </body>
 </html>
