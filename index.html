@@ -1444,6 +1444,10 @@ async function capturarLead(){
       toast('Resultado guardado 🚀');
       trackEvent('resultado_guardado');
       document.getElementById('leadEmail').value = '';
+
+      // Actualiza los indicadores después de guardar.
+      cargarStats();
+
     } else {
       console.error(data);
       toast('Error guardando resultado', '#ff5c5c');
@@ -1453,7 +1457,9 @@ async function capturarLead(){
     console.error(error);
     toast('Error de conexión', '#ff5c5c');
   }
- async function cargarStats(){
+}
+
+async function cargarStats(){
   const usuariosEl = document.getElementById('contadorUsuarios');
   const sharesEl = document.getElementById('contadorShares');
   const promedioEl = document.getElementById('promedioGanado');
@@ -1490,7 +1496,7 @@ async function capturarLead(){
   }
 }
 
-cargarStats();
+window.addEventListener('load', cargarStats);
 </script>
 </body>
 </html>
