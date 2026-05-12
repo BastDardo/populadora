@@ -1251,17 +1251,7 @@ function calcular(){
   document.getElementById('resultado').classList.add('show');
   calculado = true;
 
-  const cu = document.getElementById('contadorUsuarios');
-  const cs = document.getElementById('contadorShares');
 
-  cu.textContent = fmt(
-    Number(cu.textContent.replace(/\./g,'').replace(/,/g,'')) + 1
-  );
-
-  cs.textContent = fmt(
-    Number(cs.textContent.replace(/\./g,'').replace(/,/g,'')) +
-    Math.floor(Math.random() * 3)
-  );
 
   trackEvent('calculo_realizado', {
     horas_totales: Math.round(horasTot),
@@ -1463,6 +1453,32 @@ async function capturarLead(){
     console.error(error);
     toast('Error de conexión', '#ff5c5c');
   }
+  async function cargarStats(){
+
+  try {
+
+    const response = await fetch('/api/stats');
+
+    const data = await response.json();
+
+    if(data.total){
+
+      document.getElementById('contadorUsuarios').textContent =
+        fmt(data.total);
+
+      document.getElementById('contadorShares').textContent =
+        fmt(Math.floor(data.total * 0.62));
+
+    }
+
+  } catch(e){
+
+    console.error(e);
+
+  }
+}
+
+cargarStats();
 }
 </script>
 </body>
