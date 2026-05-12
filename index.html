@@ -1109,24 +1109,13 @@ function money(n){
 
 function toast(msg, color){
   const t = document.getElementById('toast');
-
   t.textContent = msg;
-
-  if(color){
-    t.style.background = color;
-  } else {
-    t.style.background = 'var(--accent)';
-  }
-
+  t.style.background = color || 'var(--accent)';
   t.classList.add('show');
-
-  setTimeout(() => {
-    t.classList.remove('show');
-  }, 2400);
+  setTimeout(() => t.classList.remove('show'), 2400);
 }
 
 function getRank(horasTot){
-
   if(horasTot < 200){
     return {
       emoji:'🥉',
@@ -1167,7 +1156,6 @@ function getRank(horasTot){
 }
 
 function getPercentileText(pct){
-
   if(pct < 30){
     return `Estás en el ${pct}% superior — aún hay margen para crecer como profesional sanitario.`;
   }
@@ -1184,7 +1172,6 @@ function getPercentileText(pct){
 }
 
 function calcular(){
-
   const anos    = n('anos');
   const horas   = n('horas');
   const veces   = n('veces');
@@ -1194,12 +1181,6 @@ function calcular(){
   if([anos, horas, veces, minutos, sueldo].some(v => v <= 0)){
     toast('Completá todos los campos con valores mayores a 0', '#ff5c5c');
     return;
-       
-  trackEvent('calculo_realizado', {
-  horas_totales: horasTot,
-  dinero: dinero,
-  rango: rank.name
-});
   }
 
   const dias        = anos * 52 * 5;
@@ -1213,43 +1194,24 @@ function calcular(){
   const porcentaje  = (veces * minutos) / (horas * 60) * 100;
   const jornadas    = horasTot / horas;
 
-  document.getElementById('horasOut').textContent =
-    fmt(horasTot) + ' h';
-
-  document.getElementById('diasOut').textContent =
-    fmt(diasTot) + ' días';
-
-  document.getElementById('anosOut').textContent =
-    anosTot.toFixed(2) + ' años';
-
-  document.getElementById('dineroOut').textContent =
-    money(dinero);
-
-  document.getElementById('porcentajeOut').textContent =
-    porcentaje.toFixed(1) + '%';
-
-  document.getElementById('jornadasOut').textContent =
-    fmt(jornadas);
-
   const rank = getRank(horasTot);
+  const pctText = getPercentileText(rank.pct);
 
-  document.getElementById('rankEmoji').textContent =
-    rank.emoji;
+  document.getElementById('horasOut').textContent = fmt(horasTot) + ' h';
+  document.getElementById('diasOut').textContent = fmt(diasTot) + ' días';
+  document.getElementById('anosOut').textContent = anosTot.toFixed(2) + ' años';
+  document.getElementById('dineroOut').textContent = money(dinero);
+  document.getElementById('porcentajeOut').textContent = porcentaje.toFixed(1) + '%';
+  document.getElementById('jornadasOut').textContent = fmt(jornadas);
 
-  document.getElementById('rankName').textContent =
-    rank.name;
-
-  document.getElementById('rankDesc').textContent =
-    rank.desc;
+  document.getElementById('rankEmoji').textContent = rank.emoji;
+  document.getElementById('rankName').textContent = rank.name;
+  document.getElementById('rankDesc').textContent = rank.desc;
 
   const badge = document.getElementById('rankBadge');
-
   badge.textContent = rank.name;
   badge.className = 'rank-badge ' + rank.cls;
 
-  const pctText = getPercentileText(rank.pct);
-
-  // GUARDAMOS DATOS LIMPIOS PARA SUPABASE
   ultimoResultado = {
     horas: Math.round(horasTot),
     dias: Math.round(diasTot),
@@ -1259,12 +1221,10 @@ function calcular(){
     percentile: pctText
   };
 
-  document.getElementById('percentileText').textContent =
-    pctText;
+  document.getElementById('percentileText').textContent = pctText;
 
   setTimeout(() => {
-    document.getElementById('barFill').style.width =
-      rank.pct + '%';
+    document.getElementById('barFill').style.width = rank.pct + '%';
   }, 150);
 
   textoCompartir =
@@ -1277,39 +1237,20 @@ function calcular(){
     '🏆 Rango: ' + rank.emoji + ' ' + rank.name + '\n\n' +
     '🚽 Calculá el tuyo: https://caculadora.com.ar/';
 
-  document.getElementById('shareText').value =
-    textoCompartir;
+  document.getElementById('shareText').value = textoCompartir;
 
-  // PNG
-  document.getElementById('pngHoras').textContent =
-    fmt(horasTot) + ' h';
-
-  document.getElementById('pngDias').textContent =
-    fmt(diasTot) + ' días';
-
-  document.getElementById('pngAnos').textContent =
-    anosTot.toFixed(2) + ' años';
-
-  document.getElementById('pngDinero').textContent =
-    money(dinero);
-
-  document.getElementById('pngPct').textContent =
-    porcentaje.toFixed(1) + '%';
-
-  document.getElementById('pngJornadas').textContent =
-    fmt(jornadas);
-
-  document.getElementById('pngRank').textContent =
-    rank.emoji + ' ' + rank.name + ' — ' + rank.desc;
-
-  document.getElementById('pngPercentile').textContent =
-    pctText;
+  document.getElementById('pngHoras').textContent = fmt(horasTot) + ' h';
+  document.getElementById('pngDias').textContent = fmt(diasTot) + ' días';
+  document.getElementById('pngAnos').textContent = anosTot.toFixed(2) + ' años';
+  document.getElementById('pngDinero').textContent = money(dinero);
+  document.getElementById('pngPct').textContent = porcentaje.toFixed(1) + '%';
+  document.getElementById('pngJornadas').textContent = fmt(jornadas);
+  document.getElementById('pngRank').textContent = rank.emoji + ' ' + rank.name + ' — ' + rank.desc;
+  document.getElementById('pngPercentile').textContent = pctText;
 
   document.getElementById('resultado').classList.add('show');
-
   calculado = true;
 
-  // COUNTERS
   const cu = document.getElementById('contadorUsuarios');
   const cs = document.getElementById('contadorShares');
 
@@ -1321,10 +1262,15 @@ function calcular(){
     Number(cs.textContent.replace(/\./g,'').replace(/,/g,'')) +
     Math.floor(Math.random() * 3)
   );
+
+  trackEvent('calculo_realizado', {
+    horas_totales: Math.round(horasTot),
+    dinero: Math.round(dinero),
+    rango: rank.name
+  });
 }
 
 function copiarTexto(){
-
   if(!calculado){
     toast('Calculá primero tus datos 💩', '#ff5c5c');
     return;
@@ -1337,7 +1283,6 @@ function copiarTexto(){
 }
 
 async function compartir(){
-
   if(!calculado){
     calcular();
     return;
@@ -1346,17 +1291,13 @@ async function compartir(){
   const texto = document.getElementById('shareText').value;
 
   if(navigator.share){
-
     try {
-
       await navigator.share({
         title:'La Caculadora 💩',
         text:texto,
         url:'https://caculadora.com.ar/'
       });
-
       return;
-
     } catch(e){}
   }
 
@@ -1364,13 +1305,12 @@ async function compartir(){
 }
 
 function shareWhatsApp(){
-
   if(!calculado){
     toast('Calculá primero 💩', '#ff5c5c');
     return;
+  }
 
   trackEvent('share_whatsapp');
-  }
 
   window.open(
     'https://wa.me/?text=' +
@@ -1380,13 +1320,12 @@ function shareWhatsApp(){
 }
 
 function shareX(){
-
   if(!calculado){
     toast('Calculá primero 💩', '#ff5c5c');
     return;
-
-trackEvent('share_x');
   }
+
+  trackEvent('share_x');
 
   window.open(
     'https://twitter.com/intent/tweet?text=' +
@@ -1396,16 +1335,14 @@ trackEvent('share_x');
 }
 
 function shareLinkedIn(){
-
   if(!calculado){
     toast('Calculá primero 💩', '#ff5c5c');
     return;
-
-trackEvent('share_linkedin');
   }
 
-  copiarTexto();
+  trackEvent('share_linkedin');
 
+  copiarTexto();
   toast('Texto copiado — pegalo en LinkedIn ✓');
 
   setTimeout(() => {
@@ -1414,9 +1351,7 @@ trackEvent('share_linkedin');
 }
 
 function resetear(){
-
   document.querySelectorAll('input[type=number]').forEach(i => {
-
     const defaults = {
       anos:'10',
       horas:'9',
@@ -1429,27 +1364,23 @@ function resetear(){
   });
 
   document.getElementById('resultado').classList.remove('show');
-
   document.getElementById('barFill').style.width = '0%';
-
   document.getElementById('shareText').value = '';
 
   textoCompartir = '';
-
   calculado = false;
-
   ultimoResultado = null;
 
   toast('Formulario reiniciado');
 }
 
 async function descargarImagen(){
-
   if(!calculado){
     toast('Calculá primero tus datos 💩', '#ff5c5c');
     return;
-  trackEvent('descarga_png');
   }
+
+  trackEvent('descarga_png');
 
   const target = document.getElementById('png-target');
 
@@ -1458,7 +1389,6 @@ async function descargarImagen(){
   target.style.zIndex = '-1';
 
   try {
-
     const canvas = await html2canvas(target, {
       scale:2,
       useCORS:true,
@@ -1470,27 +1400,21 @@ async function descargarImagen(){
     target.style.position = 'fixed';
 
     const a = document.createElement('a');
-
     a.download = 'resultado-bano-laboral.png';
     a.href = canvas.toDataURL('image/png');
-
     a.click();
 
     toast('Imagen descargada ✓');
 
   } catch(e){
-
     target.style.left = '-9999px';
     target.style.position = 'fixed';
-
     toast('Error al generar la imagen', '#ff5c5c');
   }
 }
 
 async function capturarLead(){
-
-  const email =
-    document.getElementById('leadEmail').value.trim();
+  const email = document.getElementById('leadEmail').value.trim();
 
   if(!email || !email.includes('@')){
     toast('Ingresá un email válido', '#ff5c5c');
@@ -1508,7 +1432,6 @@ async function capturarLead(){
   }
 
   try {
-
     const response = await fetch('/api/save-result', {
       method:'POST',
       headers:{
@@ -1528,23 +1451,16 @@ async function capturarLead(){
     const data = await response.json();
 
     if(data.ok){
-
       toast('Resultado guardado 🚀');
       trackEvent('resultado_guardado');
-
       document.getElementById('leadEmail').value = '';
-
     } else {
-
       console.error(data);
-
       toast('Error guardando resultado', '#ff5c5c');
     }
 
   } catch(error){
-
     console.error(error);
-
     toast('Error de conexión', '#ff5c5c');
   }
 }
