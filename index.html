@@ -966,15 +966,15 @@ footer {
         <div class="kpi-list">
           <div class="kpi-item">
             <div class="kpi-label">Cálculos realizados hoy</div>
-            <div class="kpi-num" id="contadorUsuarios">12.483</div>
+            <div class="kpi-num" id="contadorUsuarios">—</div>
           </div>
           <div class="kpi-item">
             <div class="kpi-label">Resultados compartidos</div>
-            <div class="kpi-num" id="contadorShares">1.907</div>
+            <div class="kpi-num" id="contadorShares">—</div>
           </div>
           <div class="kpi-item">
             <div class="kpi-label">Promedio de plata ganada</div>
-            <div class="kpi-num">8.214</div>
+            <div class="kpi-num" id="promedioGanado">—</div>
           </div>
         </div>
       </div>
@@ -1454,29 +1454,24 @@ async function capturarLead(){
     toast('Error de conexión', '#ff5c5c');
   }
   async function cargarStats(){
-
   try {
-
     const response = await fetch('/api/stats');
-
     const data = await response.json();
 
-    if(data.total){
+    document.getElementById('contadorUsuarios').textContent =
+      fmt(data.total || 0);
 
-      document.getElementById('contadorUsuarios').textContent =
-        fmt(data.total);
+    document.getElementById('contadorShares').textContent =
+      fmt(Math.floor((data.total || 0) * 0.62));
 
-      document.getElementById('contadorShares').textContent =
-        fmt(Math.floor(data.total * 0.62));
-
-    }
-
+    document.getElementById('promedioGanado').textContent =
+      'Calculando';
   } catch(e){
-
     console.error(e);
-
   }
 }
+
+cargarStats();
 
 cargarStats();
 }
